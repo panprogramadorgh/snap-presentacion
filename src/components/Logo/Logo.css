@@ -1,0 +1,24 @@
+.logo {
+  display: flex;
+  gap: 5px;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-title);
+  font-weight: 600;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.logo__letter.green {
+  color: #30ff00;
+}
+.logo__letter.red {
+  color: #ff004e;
+}
+.logo__letter.blue {
+  color: #088eff;
+}
+.logo__letter.yellow {
+  color: #ffea00;
+}
