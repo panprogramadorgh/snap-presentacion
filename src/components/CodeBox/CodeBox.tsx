@@ -1,65 +1,72 @@
 /* Imports */
 
 // react
-import { FC } from "react";
+import { FC, useState } from "react";
 
 // components
 
 // libs
 
 // utils
+import tabs from "../../utils/codeBoxTabs";
 
 // types & interfaces
 
 // css
 import "./CodeBox.css";
 
-const tabs = [
-  { label: "index.js", link: "/?tab=index.js" },
-  { label: "main.py", link: "/?tab=main.py" },
-];
-
-const matchTab = (tabLink: string): boolean => {
-  if (window.location.search === "" && tabs[0].link === tabLink) return true;
-  const params = new URLSearchParams(window.location.search);
-  const tabParam = params.get("tab");
-  if (!tabParam) return false;
-  const tabLinkParams = new URLSearchParams(tabLink.substring(1));
-  const tabLinkTabParam = tabLinkParams.get("tab");
-  if (!tabLinkTabParam) return false;
-  return tabLinkTabParam === tabParam;
-};
-
 interface Props {}
 
 const CodBox: FC<Props> = ({}) => {
+  const [currentTab, setCurrentTab] = useState<number>(0);
+
   return (
     <div className="codebox">
-      <ul className="codebox__header">
-        <li className="codebox__header__btn red"></li>
-        <li className="codebox__header__btn yellow"></li>
-        <li className="codebox__header__btn green"></li>
-        {tabs.map((tab, index) => (
-          <li className="codebox__header__tab" key={index}>
-            <a
-              href={tab.link}
-              className={`codebox__header__tab__a ${
-                matchTab(tab.link) ? "active" : ""
-              }`.trim()}
+      <div className="codebox__header">
+        <div className="codebox__header__btn-container">
+          <div className="codebox__header__btn-container__btn red"></div>
+          <div className="codebox__header__btn-container__btn yellow"></div>
+          <div className="codebox__header__btn-container__btn green"></div>
+        </div>
+        <div className="codebox__header__tab-container">
+          <span className="codebox__header__tab-container__tab-indicator">
+            {tabs[currentTab].label}
+          </span>
+          {tabs.map((tab, index) => (
+            <button
+              onClick={() => setCurrentTab(index)}
+              className={`codebox__header__tab-container__tab ${
+                currentTab === index ? "active" : ""
+              }`}
+              key={tab.label}
             >
               {tab.label}
-            </a>
+            </button>
+          ))}
+        </div>
+      </div>
+      <ol className="codebox__line-container">
+        {tabs[currentTab].content.map((line, index) => (
+          <li className="codebox__line-container__line" key={index}>
+            {line}
           </li>
         ))}
-      </ul>
-      <ol className="codebox__line-container">
-        <li className="codebox__line-container__line">// hello world</li>
-        <li className="codebox__line-container__line">// hello world</li>
-        <li className="codebox__line-container__line">// hello world</li>
-        <li className="codebox__line-container__line">// hello world</li>
-        <li className="codebox__line-container__line">// hello world</li>
-        <li className="codebox__line-container__line">// hello world</li>
       </ol>
+      <div className="codebox__footer">
+        {tabs.map((tab, index) => {
+          return (
+            <div
+              key={tab.label}
+              onClick={() => {
+                setCurrentTab(index);
+              }}
+              className={`codebox__footer__btn ${
+                currentTab === index ? "active" : ""
+              }`.trim()}
+            ></div>
+          );
+        })}
+      </div>
     </div>
   );
 };
