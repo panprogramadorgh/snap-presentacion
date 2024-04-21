@@ -1,16 +1,18 @@
 /* Imports */
 
 // react
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 
 // components
+import CodeBoxSkeleton from "./CodeBoxSkeleton";
 
 // libs
 
 // utils
-import tabs from "../../utils/code-box-tabs";
+import tabsPromise from "../../utils/code-box-tabs";
 
 // types & interfaces
+import { Tab } from "../../utils/definitions";
 
 // css
 import "./CodeBox.css";
@@ -19,7 +21,17 @@ interface Props {}
 
 const CodBox: FC<Props> = ({}) => {
   const [currentTab, setCurrentTab] = useState<number>(0);
+  const [tabs, setTabs] = useState<Tab[] | null>(null);
 
+  useEffect(() => {
+    tabsPromise.then((tabs) => {
+      setTimeout(() => {
+        setTabs(tabs);
+      }, Math.floor(Math.random() * 600 + 200));
+    });
+  }, []);
+
+  if (!tabs) return <CodeBoxSkeleton />;
   return (
     <div className="codebox">
       <div className="codebox__header">
