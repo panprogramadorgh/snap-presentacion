@@ -187,6 +187,13 @@
   background-color: var(--color);
 }
 
+.codebox.skeleton .codebox__footer__btn {
+  height: 12px;
+  width: 100px;
+  background-color: var(--border-color);
+  border-radius: var(--border-radius);
+}
+
 @media only screen and (max-width: 700px) {
   .codebox__header__tab-container__tab {
     display: none;

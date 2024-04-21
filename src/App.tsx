@@ -2,13 +2,33 @@ import Header from "./components/Header/Header";
 import CodeBox from "./components/CodeBox/CodeBox";
 import "./App.css";
 
+import fromStringToCode from "./utils/code-coloring";
+import fetchCode from "./utils/fetch-code";
+
 function App() {
   return (
     <>
       <Header />
       <main className="app__main">
         <section>
-          <CodeBox />
+          <CodeBox
+            getTabs={async () => {
+              return [
+                {
+                  label: "index.js",
+                  content: fromStringToCode(await fetchCode("index.js")),
+                },
+                {
+                  label: "main.py",
+                  content: fromStringToCode(await fetchCode("main.py")),
+                },
+                {
+                  label: "game.ts",
+                  content: fromStringToCode(await fetchCode("game.ts")),
+                },
+              ];
+            }}
+          />
         </section>
         <section>
           <h1 id="about">About Project</h1>

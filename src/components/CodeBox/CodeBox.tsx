@@ -9,7 +9,7 @@ import CodeBoxSkeleton from "./CodeBoxSkeleton";
 // libs
 
 // utils
-import tabsPromise from "../../utils/code-box-tabs";
+// import tabsPromise from "../../utils/code-box-tabs";
 
 // types & interfaces
 import { Tab } from "../../utils/definitions";
@@ -17,14 +17,16 @@ import { Tab } from "../../utils/definitions";
 // css
 import "./CodeBox.css";
 
-interface Props {}
+interface Props {
+  getTabs: () => Promise<Tab[]>;
+}
 
-const CodBox: FC<Props> = ({}) => {
+const CodBox: FC<Props> = ({ getTabs }) => {
   const [currentTab, setCurrentTab] = useState<number>(0);
   const [tabs, setTabs] = useState<Tab[] | null>(null);
 
   useEffect(() => {
-    tabsPromise.then((tabs) => {
+    getTabs().then((tabs) => {
       setTimeout(() => {
         setTabs(tabs);
       }, Math.floor(Math.random() * 600 + 200));

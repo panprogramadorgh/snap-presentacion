@@ -47,9 +47,7 @@ const CodeBoxSkeleton: FC<Props> = ({}) => {
         ))}
       </ol>
       <div className="codebox__footer">
-        {new Array(3).fill(null).map((_, index) => {
-          return <div className="codebox__footer__btn" key={index}></div>;
-        })}
+        <div className="codebox__footer__btn"></div>
       </div>
     </div>
   );
