@@ -44,7 +44,7 @@ function App() {
             </p>
           </article>
           <article className="app__main__section__article splited">
-            <div>
+            <div className="app__main__section__article__text-container">
               <h2>Our innovative learning method</h2>
               <p>
                 Snap code is based on an innovative practice-oriented learning
@@ -52,7 +52,7 @@ function App() {
                 better.
               </p>
             </div>
-            <div>
+            <div className="app__main__section__article__codebox-container">
               <CodeBox
                 skeletonLines={19}
                 getTabs={async () => {
@@ -62,11 +62,37 @@ function App() {
                       content: fromStringToCode(
                         await fetchCode("javascript-conditionals.js")
                       ),
-                      highlightedLines: [9, 10, 11, 12, 13]
+                      highlightedLines: [9, 10, 11, 12, 13],
                     },
                   ];
                 }}
               />
+            </div>
+          </article>
+          <article className="app__main__section__article splited">
+            <div className="app__main__section__article__codebox-container">
+              <CodeBox
+                skeletonLines={19}
+                getTabs={async () => {
+                  return [
+                    {
+                      label: "conditionals.js",
+                      content: fromStringToCode(
+                        await fetchCode("javascript-conditionals.js")
+                      ),
+                      highlightedLines: [9, 10, 11, 12, 13],
+                    },
+                  ];
+                }}
+              />
+            </div>
+            <div className="app__main__section__article__text-container">
+              <h2>Our innovative learning method</h2>
+              <p>
+                Snap code is based on an innovative practice-oriented learning
+                method, which means that in less time you will learn more and
+                better.
+              </p>
             </div>
           </article>
         </section>

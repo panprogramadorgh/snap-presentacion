@@ -16,21 +16,19 @@
   display: flex;
   align-items: center;
 }
-.app__main__section__article.splited > div:first-child {
+.app__main__section__article.splited > div > h2 {
+  margin-top: 15px;
+}
+.app__main__section__article__text-container {
   flex-basis: 0;
   flex-grow: 1;
 }
-.app__main__section__article.splited > div:last-child {
+.app__main__section__article__codebox-container {
   flex-basis: 0;
   flex-grow: 1.5;
 }
-
-.app__main__section__article.splited > div:last-child .codebox {
-  margin-left: 20px;
-}
-
-.app__main__section__article.splited > div > h2 {
-  margin-top: 15px;
+.app__main__section__article__codebox-container .codebox {
+  margin: 0 20px;
 }
 
 @media only screen and (max-width: 800px) {
