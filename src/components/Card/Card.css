@@ -1,5 +1,6 @@
 .card {
-  margin: 50px 0;
+  flex-basis: 300px;
+  flex-grow: 1;
   padding: 20px;
   border: var(--border-width) solid var(--border-color);
   border-radius: var(--border-radius);
@@ -7,11 +8,17 @@
 
   box-shadow: 0 0 100px #0099ff10;
 
+  user-select: none;
+
   transition: all 0.3s;
 }
 
 .card:hover {
-  box-shadow: 0 0 100px #0099ff30;
+  box-shadow: 0 0 100px #0099ff20;
+}
+
+.card:active {
+  transform: rotateY(13deg) rotateX(-10deg);
 }
 
 .card span {

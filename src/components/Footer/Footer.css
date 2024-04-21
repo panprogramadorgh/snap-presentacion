@@ -1,9 +1,18 @@
 .footer {
-  padding: 0;
+  padding-top: 100px;
   margin: 0;
-  margin-top: 100px;
+  margin-top: 150px;
   width: 100vw;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
   background-color: var(--background-color-card);
   border-top: var(--border-width) solid var(--border-color);
+}
+
+.footer__container h2 {
+  font-size: var(--font-size-title);
+}
+.footer__container h2 span {
+  color: var(--a-color);
 }

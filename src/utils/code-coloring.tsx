@@ -98,8 +98,8 @@ function fromStringToCode(str: string): ReactNode[] {
     };
 
     // Line comments coloring
-    function colorLineComment(): boolean | void {
-      const lineCommentIndex = currentLine().indexOf("//");
+    function colorLineComment(commentSymbol: string): boolean | void {
+      const lineCommentIndex = currentLine().indexOf(commentSymbol);
       if (lineCommentIndex === -1) return;
 
       const commentLine = currentLine().substring(lineCommentIndex);
@@ -108,7 +108,7 @@ function fromStringToCode(str: string): ReactNode[] {
       ));
       return true;
     }
-    const lineIsComment = colorLineComment();
+    const lineIsComment = colorLineComment("//") || colorLineComment("#");
 
     // Solamente hace el resto del coloreado cuando no es un comentario
     if (!lineIsComment) {

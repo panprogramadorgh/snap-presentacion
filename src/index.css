@@ -29,6 +29,11 @@
   --moz-osx-font-smoothing: grayscale;
 }
 
+::selection {
+  background-color: #0099ff;
+  color: #fff;
+}
+
 html {
   color-scheme: light dark;
 
@@ -43,6 +48,8 @@ html {
   text-rendering: var(--text-rendering);
   -webkit-font-smoothing: var(--webkit-font-smoothing);
   -moz-osx-font-smoothing: var(--moz-osx-font-smoothing);
+
+  overflow-x: hidden;
 }
 
 #root {
@@ -52,7 +59,7 @@ html {
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  width: calc(100vw - 34px);
+  width: 100vw;
   min-height: 100vh;
 }
 
@@ -99,5 +106,13 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  /* background-color: #0099ff40; */
+}
+
+input {
+  outline: none;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 10px;
+  font-size: var(--font-size);
 }

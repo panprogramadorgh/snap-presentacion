@@ -1,6 +1,7 @@
 import Header from "./components/Header/Header";
 import CodeBox from "./components/CodeBox/CodeBox";
 import Card from "./components/Card/Card";
+import Form from "./components/Form/Form";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
 
@@ -81,14 +82,15 @@ function App() {
             <div className="app__main__section__article__codebox-container">
               <CodeBox
                 skeletonLines={19}
+                linesFadeout={true}
                 getTabs={async () => {
                   return [
                     {
-                      label: "conditionals.js",
+                      label: "shopping.py",
                       content: fromStringToCode(
-                        await fetchCode("javascript-conditionals.js")
+                        await fetchCode("shop-list.py")
                       ),
-                      highlightedLines: [9, 10, 11, 12, 13],
+                      highlightedLines: [4, 5, 6, 9, 10, 11, 12],
                     },
                   ];
                 }}
@@ -106,9 +108,8 @@ function App() {
               </p>
             </div>
           </article>
-          <hr />
         </section>
-        <section className="app__main__section">
+        <section className="app__main__section card-section">
           <Card
             title={
               <>
@@ -116,12 +117,10 @@ function App() {
               </>
             }
           >
-            Our project is about innovating, taking care of our customers and
-            making devices work well together. We highly value innovation to
-            remain competitive. We strive for great customer service and make
-            our devices integrate seamlessly so users have a good experience.
-            These are our principles to be the best in technology and satisfy
-            our customers.
+            We believe in responsibility, sacrifice, companionship, and
+            coordination. We take ownership of our actions, value sacrifices for
+            success, and promote mutual respect and encouragement. Together, we
+            maximize our impact through effective teamwork.
           </Card>
           <Card
             title={
@@ -130,15 +129,26 @@ function App() {
               </>
             }
           >
-            We want to create a digital platform that provides fair and
-            affordable access to high-quality educational resources and
-            interactive tools. We value things like ensuring equal learning
-            opportunities, promoting collaboration between students and mentors,
-            constantly innovating our educational and technological methods,
-            providing exceptional customer service, and most importantly,
-            ensuring device interoperability for easy access to our platform on
-            any time and place.
+            We aim to create a digital platform providing fair access to quality
+            education and tools. We prioritize equal opportunities,
+            collaboration, innovation, excellent service, and device
+            compatibility for convenient access.
           </Card>
+          <Card
+            title={
+              <>
+                Our <span>team</span>
+              </>
+            }
+          >
+            We focus on innovation, top-tier customer service, and device
+            interoperability. Innovation drives our progress, while exceptional
+            service and device compatibility ensure customer satisfaction. These
+            values represent our commitment to excellence in technology.
+          </Card>
+        </section>
+        <section className="app__main__section">
+          <Form />
         </section>
       </main>
       <Footer />

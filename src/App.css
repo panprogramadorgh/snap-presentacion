@@ -3,6 +3,10 @@
   padding: 0 15px;
 }
 
+.app__main__section {
+  margin-bottom: 200px;
+}
+
 .app__main__section hr {
   margin: 80px 0;
   border: var(--border-width) solid var(--border-color);
@@ -12,11 +16,18 @@
   margin-bottom: 150px;
 }
 
+.app__main__section.card-section {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px;
+}
+
 .app__main__section__article h2 {
   margin: 10px 0;
 }
 
-.app__main__section__article span {
+.app__main__section__article h2 span,
+.app__main__section__article p span {
   color: var(--a-color);
 }
 
@@ -28,6 +39,7 @@
   margin-top: 15px;
 }
 .app__main__section__article__text-container {
+  margin: 0 50px;
   flex-basis: 0;
   flex-grow: 1;
 }
@@ -35,9 +47,6 @@
 .app__main__section__article__codebox-container {
   flex-basis: 0;
   flex-grow: 1.5;
-}
-.app__main__section__article__codebox-container .codebox {
-  margin: 0 20px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -49,10 +58,20 @@
     margin: 0;
   }
   .app__main__section__article__text-container {
+    margin: 30px 0;
     order: 0;
   }
   .app__main__section__article__codebox-container {
     order: 1;
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .app__main__section h1 {
+    font-size: var(--font-size-large);
+  }
+  .app__main__section__article h2 {
+    font-size: var(--font-size-big);
   }
 }

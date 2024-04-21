@@ -19,9 +19,10 @@ import "./CodeBox.css";
 interface Props {
   getTabs: () => Promise<Tab[]>;
   skeletonLines: number;
+  linesFadeout?: boolean;
 }
 
-const CodBox: FC<Props> = ({ skeletonLines, getTabs }) => {
+const CodBox: FC<Props> = ({ skeletonLines, getTabs, linesFadeout }) => {
   const [currentTab, setCurrentTab] = useState<number>(0);
   const [tabs, setTabs] = useState<Tab[] | null>(null);
 
@@ -65,6 +66,10 @@ const CodBox: FC<Props> = ({ skeletonLines, getTabs }) => {
             className={`codebox__line-container__line ${
               tabs[currentTab].highlightedLines?.includes(index + 1)
                 ? "highlighted"
+                : ""
+            } ${
+              linesFadeout && index >= tabs[currentTab].content.length - 1 - 5
+                ? `fadeout${tabs[currentTab].content.length - (5 + 1) - index}`
                 : ""
             }`.trim()}
             key={index}
