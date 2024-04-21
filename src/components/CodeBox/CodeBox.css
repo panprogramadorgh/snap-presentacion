@@ -1,5 +1,6 @@
 .codebox {
   animation: fadein 0.4s ease-in-out;
+  box-shadow: 0 0 100px #0099ff30;
 }
 
 .codebox.skeleton {
@@ -85,8 +86,8 @@
   padding-right: 0;
   background-color: var(--background-color-card);
   font-family: var(--font-family-mono);
-  border-bottom-right-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
+  /* border-bottom-right-radius: var(--border-radius); */
+  /* border-bottom-left-radius: var(--border-radius); */
   border-right: var(--border-width) solid var(--border-color);
   border-bottom: var(--border-width) solid var(--border-color);
   border-left: var(--border-width) solid var(--border-color);
@@ -186,11 +187,15 @@
 }
 
 .codebox__footer {
-  padding-top: 12px;
-  width: 100%;
+  padding: 12px 0;
+  width: calc(100% - 2px);
   display: flex;
   justify-content: center;
   gap: 3%;
+  background-color: var(--background-color-card);
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  outline: var(--border-width) solid var(--border-color);
 }
 .codebox__footer__btn {
   width: 16px;

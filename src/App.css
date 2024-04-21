@@ -1,15 +1,23 @@
-.app__main__section {
-  margin-bottom: 100px;
+.app__main {
+  width: min(1000px, 80%);
+  padding: 0 15px;
+}
+
+.app__main__section hr {
+  margin: 80px 0;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
 }
 .app__main__section.main {
   margin-bottom: 150px;
 }
 
-.app__main__section__article {
-  margin-bottom: 80px;
-}
 .app__main__section__article h2 {
   margin: 10px 0;
+}
+
+.app__main__section__article span {
+  color: var(--a-color);
 }
 
 .app__main__section__article.splited {
@@ -23,6 +31,7 @@
   flex-basis: 0;
   flex-grow: 1;
 }
+
 .app__main__section__article__codebox-container {
   flex-basis: 0;
   flex-grow: 1.5;
@@ -33,9 +42,17 @@
 
 @media only screen and (max-width: 800px) {
   .app__main__section__article.splited {
-    display: block;
+    display: flex;
+    flex-flow: column nowrap;
   }
-  .app__main__section__article.splited > div:last-child .codebox {
+  .app__main__section__article__codebox-container .codebox {
     margin: 0;
+  }
+  .app__main__section__article__text-container {
+    order: 0;
+  }
+  .app__main__section__article__codebox-container {
+    order: 1;
+    width: 100%;
   }
 }

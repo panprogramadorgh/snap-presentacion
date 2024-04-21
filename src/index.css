@@ -11,8 +11,8 @@
   --border-color: #2c2c31;
 
   --color: #fefefe;
-  --a-color: #646cff;
-  --a-color-hover: #8288ff;
+  --a-color: #0099ff;
+  --a-color-hover: #0099ffc0;
   --background-color: #222227;
   --background-color-card: #19191c;
 
@@ -46,16 +46,19 @@ html {
 }
 
 #root {
-  width: min(1000px, 80%);
-  padding: 0 15px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: calc(100vw - 34px);
+  min-height: 100vh;
 }
 
 body {
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
+  padding: 0;
 }
 
 a {
@@ -97,10 +100,4 @@ button {
 }
 button:hover {
   border-color: #646cff;
-}
-
-@media only screen and (max-width: 700px) {
-  #root {
-    width: 90%;
-  }
 }
