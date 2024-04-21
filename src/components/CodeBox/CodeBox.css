@@ -82,7 +82,7 @@
 .codebox__line-container {
   margin: 0;
   padding: 20px;
-  padding-left: 50px;
+  padding-left: 60px;
   padding-right: 0;
   background-color: var(--background-color-card);
   font-family: var(--font-family-mono);
@@ -117,7 +117,7 @@
   height: 24px;
   position: absolute;
   top: 0;
-  left: -50px;
+  left: -60px;
   z-index: -100;
   border-top: var(--border-width) solid transparent;
   border-bottom: var(--border-width) solid transparent;
