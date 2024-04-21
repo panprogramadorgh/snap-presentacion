@@ -19,9 +19,10 @@ import "./CodeBox.css";
 
 interface Props {
   getTabs: () => Promise<Tab[]>;
+  skeletonLines: number;
 }
 
-const CodBox: FC<Props> = ({ getTabs }) => {
+const CodBox: FC<Props> = ({ skeletonLines, getTabs }) => {
   const [currentTab, setCurrentTab] = useState<number>(0);
   const [tabs, setTabs] = useState<Tab[] | null>(null);
 
@@ -33,7 +34,7 @@ const CodBox: FC<Props> = ({ getTabs }) => {
     });
   }, []);
 
-  if (!tabs) return <CodeBoxSkeleton />;
+  if (!tabs) return <CodeBoxSkeleton skeletonLines={skeletonLines} />;
   return (
     <div className="codebox">
       <div className="codebox__header">
@@ -67,19 +68,21 @@ const CodBox: FC<Props> = ({ getTabs }) => {
         ))}
       </ol>
       <div className="codebox__footer">
-        {tabs.map((tab, index) => {
-          return (
-            <div
-              key={tab.label}
-              onClick={() => {
-                setCurrentTab(index);
-              }}
-              className={`codebox__footer__btn ${
-                currentTab === index ? "active" : ""
-              }`.trim()}
-            ></div>
-          );
-        })}
+        {tabs.length === 1
+          ? null
+          : tabs.map((tab, index) => {
+              return (
+                <div
+                  key={tab.label}
+                  onClick={() => {
+                    setCurrentTab(index);
+                  }}
+                  className={`codebox__footer__btn ${
+                    currentTab === index ? "active" : ""
+                  }`.trim()}
+                ></div>
+              );
+            })}
       </div>
     </div>
   );

@@ -1,0 +1,39 @@
+.app__main__section {
+  margin-bottom: 100px;
+}
+.app__main__section.main {
+  margin-bottom: 150px;
+}
+
+.app__main__section__article {
+  margin-bottom: 80px;
+}
+
+.app__main__section__article.splited {
+  display: flex;
+}
+.app__main__section__article.splited > div:first-child {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+.app__main__section__article.splited > div:last-child {
+  flex-basis: 0;
+  flex-grow: 1.5;
+}
+
+.app__main__section__article.splited > div:last-child .codebox {
+  margin-left: 20px;
+}
+
+.app__main__section__article.splited > div > h2 {
+  margin-top: 15px;
+}
+
+@media only screen and (max-width: 800px) {
+  .app__main__section__article.splited {
+    display: block;
+  }
+  .app__main__section__article.splited > div:last-child .codebox {
+    margin: 0;
+  }
+}

@@ -13,9 +13,11 @@ import { FC } from "react";
 
 // css
 
-interface Props {}
+interface Props {
+  skeletonLines: number;
+}
 
-const CodeBoxSkeleton: FC<Props> = ({}) => {
+const CodeBoxSkeleton: FC<Props> = ({ skeletonLines }) => {
   return (
     <div className="codebox skeleton">
       <div className="codebox__header">
@@ -37,7 +39,7 @@ const CodeBoxSkeleton: FC<Props> = ({}) => {
         </div>
       </div>
       <ol className="codebox__line-container">
-        {new Array(11).fill(null).map((_, index) => (
+        {new Array(skeletonLines).fill(null).map((_, index) => (
           <li className="codebox__line-container__line" key={index}>
             <div
               className="codebox__line-container__line__bar"
