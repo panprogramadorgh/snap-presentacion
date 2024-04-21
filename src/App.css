@@ -8,9 +8,13 @@
 .app__main__section__article {
   margin-bottom: 80px;
 }
+.app__main__section__article h2 {
+  margin: 10px 0;
+}
 
 .app__main__section__article.splited {
   display: flex;
+  align-items: center;
 }
 .app__main__section__article.splited > div:first-child {
   flex-basis: 0;

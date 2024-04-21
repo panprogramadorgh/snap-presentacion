@@ -53,7 +53,7 @@
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 450px) {
   .header__title-container h1 {
     font-size: var(--font-size-large);
   }

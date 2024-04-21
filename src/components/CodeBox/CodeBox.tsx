@@ -9,7 +9,6 @@ import CodeBoxSkeleton from "./CodeBoxSkeleton";
 // libs
 
 // utils
-// import tabsPromise from "../../utils/code-box-tabs";
 
 // types & interfaces
 import { Tab } from "../../utils/definitions";
@@ -62,7 +61,14 @@ const CodBox: FC<Props> = ({ skeletonLines, getTabs }) => {
       </div>
       <ol className="codebox__line-container">
         {tabs[currentTab].content.map((line, index) => (
-          <li className="codebox__line-container__line" key={index}>
+          <li
+            className={`codebox__line-container__line ${
+              tabs[currentTab].highlightedLines?.includes(index + 1)
+                ? "highlighted"
+                : ""
+            }`.trim()}
+            key={index}
+          >
             {line}
           </li>
         ))}

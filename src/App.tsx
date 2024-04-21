@@ -62,6 +62,7 @@ function App() {
                       content: fromStringToCode(
                         await fetchCode("javascript-conditionals.js")
                       ),
+                      highlightedLines: [9, 10, 11, 12, 13]
                     },
                   ];
                 }}
