@@ -1,19 +1,19 @@
 export default [
   {
-    label: "About Project",
-    link: "#about",
-  },
-  {
-    label: "Documentation",
-    link: "#docs",
+    label: "Donate",
+    link: "#donate",
   },
   {
     label: "Contact",
     link: "#contact",
   },
   {
-    label: "Donate",
-    link: "#donate",
+    label: "Docs",
+    link: "#docs",
+  },
+  {
+    label: "About",
+    link: "#about",
   },
   {
     highlighted: true,

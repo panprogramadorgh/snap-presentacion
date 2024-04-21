@@ -1,6 +1,6 @@
 :root {
   --font-family: Inter, sans-serif;
-  --font-family-mono: "Fira Code", "Cascadia Code", "Cascadia Mono", consolas,
+  --font-family-mono: "Cascadia Code", "Cascadia Mono", "Fira Code", consolas,
     monospace;
   --line-height: 1.5;
   --font-weight: 400;

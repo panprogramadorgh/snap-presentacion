@@ -8,7 +8,7 @@ import { FC, useState } from "react";
 // libs
 
 // utils
-import tabs from "../../utils/codeBoxTabs";
+import tabs from "../../utils/code-box-tabs";
 
 // types & interfaces
 

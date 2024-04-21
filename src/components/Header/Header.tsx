@@ -10,7 +10,7 @@ import Dropdown from "./Dropdown";
 // libs
 
 // utils
-import headerOptions from "../../utils/headerOptions";
+import headerOptions from "../../utils/header-options";
 
 // types & interfaces
 

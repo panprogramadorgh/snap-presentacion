@@ -8,7 +8,7 @@ import { FC, useState } from "react";
 // libs
 
 // utils
-import headerOptions from "../../utils/headerOptions";
+import headerOptions from "../../utils/header-options";
 
 // types & interfaces
 

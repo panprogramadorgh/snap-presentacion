@@ -1,5 +1,6 @@
 .codebox {
   margin-bottom: 100px;
+  animation: fadein 0.4s ease-in-out;
 }
 
 .codebox__header {
@@ -84,35 +85,61 @@
   height: 5px;
 }
 .codebox__line-container::-webkit-scrollbar-thumb {
-  background-color: var(--a-color);
+  background-color: var(--color);
   border-radius: var(--border-radius);
 }
 .codebox__line-container::-webkit-scrollbar-thumb:active {
-  background-color: var(--a-color-hover);
+  background-color: #fffa;
 }
 
 .codebox__line-container__line {
-  padding-left: 10px;
-  transition: background-color 0.1s;
+  position: relative;
+  transition: all 0.1s;
+  z-index: 100;
 }
-.codebox__line-container__line .word {
-  color: #e7e7e7;
+.codebox__line-container__line::after {
+  content: "";
+  width: 996px;
+  height: 24px;
+  position: absolute;
+  top: 0;
+  left: -50px;
+  z-index: -100;
+  border-top: var(--border-width) solid transparent;
+  border-bottom: var(--border-width) solid transparent;
 }
-.codebox__line-container__line .word.keyword {
-  color: #646cff;
+.codebox__line-container__line .token {
+  color: #81ff85;
 }
-.codebox__line-container__line .word.operator {
-  color: #8288ff;
+.codebox__line-container__line .token.keyword {
+  color: #ed73c3;
 }
-.codebox__line-container__line .word.punctuation {
-  color: #e8b498;
+.codebox__line-container__line .token.operator {
+  color: #ed73c3;
 }
-.codebox__line-container__line .word.value {
-  color: #b3d193;
+.codebox__line-container__line .token.punctuation {
+  color: #ebeef1;
 }
-.codebox__line-container__line:hover {
-  background-color: #222227b0;
+.codebox__line-container__line .token.value {
+  color: #c49ff8;
 }
+.codebox__line-container__line .token.value.string {
+  color: #e6ec76;
+}
+.codebox__line-container__line .token.comment {
+  white-space: pre;
+  color: var(--border-color);
+  font-weight: 600;
+  transition: all 0.1s;
+}
+.codebox__line-container__line:hover .token.comment {
+  color: var(--color);
+}
+.codebox__line-container__line:hover::after {
+  border-color: var(--border-color);
+  background-color: var(--background-color);
+}
+
 .codebox__line-container__line::marker {
   color: var(--border-color);
   font-weight: 800;
@@ -130,8 +157,8 @@
   gap: 3%;
 }
 .codebox__footer__btn {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 100%;
   background-color: #fefefe70;
 }
@@ -145,5 +172,16 @@
   }
   .codebox__header__tab-container__tab-indicator {
     display: inline-block;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translate(0, 50px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
