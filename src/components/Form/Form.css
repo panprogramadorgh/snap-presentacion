@@ -7,17 +7,22 @@
 }
 
 .form__text-container {
-  padding-left: 40px;
+  padding: 0 40px;
   display: flex;
   flex-flow: column nowrap;
+  flex-grow: 3;
+  flex-basis: 0;;
 }
+
 .form__text-container__title {
   font-size: var(--font-size-large);
   text-align: center;
 }
+
 .form__text-container__title span {
   color: var(--a-color);
 }
+
 .form__text-container__input-container {
   margin-bottom: 30px;
   display: flex;
@@ -25,10 +30,11 @@
   flex-basis: 0;
   flex-grow: 1;
 }
-.form__text-container__input-container:hover
-  .form__text-container__input-container__label {
+
+.form__text-container__input-container:hover .form__text-container__input-container__label {
   color: var(--a-color);
 }
+
 .form__text-container__input-container__label {
   color: var(--border-color);
   font-size: var(--font-size-medium);
@@ -36,6 +42,7 @@
   font-family: var(--font-family-mono);
   transition: all 0.3s;
 }
+
 .form__text-container__input-container__textarea {
   background-color: var(--background-color);
   border: var(--border-width) solid var(--border-color);
@@ -46,44 +53,62 @@
   font-family: var(--font-family);
   overflow-y: auto;
 }
+
 .form__text-container__input-container__input {
   background-color: var(--background-color);
 }
+
 .form__text-container__input-container__button {
   border: var(--border-width) solid var(--a-color);
   transition: all 0.1s;
 }
+
 .form__text-container__input-container__button:hover {
   background-color: #0099ff20;
 }
+
 .form__text-container__input-container__input::placeholder {
   color: var(--border-color);
+}
+
+.form__codebox-container {
+  width: 50%;
+}
+
+.form__codebox-container .codebox {
+  box-shadow: none;
 }
 
 .form__codebox-container .codebox__header {
   border-top: none;
   border-right: none;
+  border-left: none;
   border-top-left-radius: 0;
 }
+
 .form__codebox-container .codebox__line-container {
   border-top: none;
   border-right: none;
+  border-left: none;
 }
 
 .form__codebox-container .codebox__footer {
   border-bottom: none;
   border-right: none;
+  border-left: none;
   border-bottom-left-radius: 0;
   width: calc(100% - 2px);
 }
 
-@media only screen and (max-width: 1170px) {
+@media only screen and (max-width: 900px) {
   .form {
     flex-flow: column nowrap;
   }
+
   .form__text-container {
     padding: 30px;
   }
+
   .form__codebox-container {
     display: none;
   }

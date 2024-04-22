@@ -77,6 +77,7 @@ const Form: FC<Props> = ({}) => {
       <div className="form__codebox-container">
         <CodeBox
           skeletonLines={21}
+          linesFadeout
           getTabs={async () => {
             return [
               {

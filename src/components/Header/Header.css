@@ -19,15 +19,21 @@
 
 .header__list__li__option {
   font-size: var(--font-size);
+  background-color: #0099ff20;
+  padding: 5px;
+  border-radius: var(--border-radius);
 }
+
 .header__list__li__option.highlighted {
   color: var(--color);
   background-color: var(--a-color);
   padding: 7px 12px;
   border-radius: var(--border-radius);
   border: var(--border-width) solid var(--a-color);
+  box-shadow: 0 0 100px #0099ff;
   transition: all 0.2s;
 }
+
 .header__list__li__option.highlighted:hover {
   text-decoration: none;
   background-color: transparent;
@@ -36,6 +42,7 @@
 .header__title-container {
   width: min(1000px, 80%);
 }
+
 .header__title-container h1 {
   font-size: 3.8rem;
   display: flex;
@@ -48,9 +55,11 @@
     gap: 10px;
     justify-content: flex-start;
   }
+
   .header__list__li__option {
     display: none;
   }
+
   .header__title-container h1 {
     font-size: var(--font-size-title);
   }
