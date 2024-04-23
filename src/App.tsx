@@ -1,5 +1,6 @@
 import Header from "./components/Header/Header";
 import CodeBox from "./components/CodeBox/CodeBox";
+import ProgressMonitoring from "./components/ProgressMonitoring/ProgressMonitoring"
 import Card from "./components/Card/Card";
 import Form from "./components/Form/Form";
 import Footer from "./components/Footer/Footer";
@@ -27,8 +28,8 @@ function App() {
                   content: fromStringToCode(await fetchCode("main.py")),
                 },
                 {
-                  label: "game.ts",
-                  content: fromStringToCode(await fetchCode("game.ts")),
+                  label: "vampires-game.ts",
+                  content: fromStringToCode(await fetchCode("vampires-game.ts")),
                 },
               ];
             }}
@@ -43,7 +44,7 @@ function App() {
             <p>
               Snap Code is an open source web platform available for any device
               aimed at learning programming in the most in-demand languages such
-              as JavaScript and Python. Our goal is to involve more people than
+              as JavaScript, TypeScript and Python. Our goal is to involve more people than
               ever in the world of development thanks to our innovative learning
               method.
             </p>
@@ -70,7 +71,7 @@ function App() {
                       content: fromStringToCode(
                         await fetchCode("javascript-conditionals.js")
                       ),
-                      highlightedLines: [9, 10, 11, 12, 13],
+                      highlightedLines: [9, 10, 11, 12, 13, 15, 16, 17, 18, 19],
                     },
                   ];
                 }}
@@ -108,6 +109,47 @@ function App() {
               </p>
             </div>
           </article>
+          <hr />
+          <article className="app__main__section__article splited">
+            <div className="app__main__section__article__text-container">
+              <h2>
+                <span>Real-time</span> execution
+              </h2>
+              <p>
+                Execute your programming code in real time in the most demanded programming languages through our application with great performance.
+              </p>
+            </div>
+            <div className="app__main__section__article__codebox-container">
+              <CodeBox
+                skeletonLines={19}
+                getTabs={async () => {
+                  return [
+                    {
+                      label: "board-game.ts",
+                      content: fromStringToCode(
+                        await fetchCode("board-game.ts")
+                      ),
+                      highlightedLines: [4, 5, 8, 9],
+                    },
+                  ];
+                }}
+              />
+            </div>
+          </article>
+          <hr />
+          <article className="app__main__section__article">
+            <div className="app__main__section__article__text-container">
+              <h2>
+                Process <span>monitoring</span>
+              </h2>
+              <p>
+                You could exhaustively track your progress as a programmer, being able to see all the levels you have passed and thus the knowledge acquired.
+              </p>
+              <div className="app__main__section__article__progress-monitoring-container">
+                <ProgressMonitoring />
+              </div>
+            </div>
+          </article>
         </section>
         <section className="app__main__section card-section">
           <Card
@@ -117,10 +159,7 @@ function App() {
               </>
             }
           >
-            We believe in responsibility, sacrifice, companionship, and
-            coordination. We take ownership of our actions, value sacrifices for
-            success, and promote mutual respect and encouragement. Together, we
-            maximize our impact through effective teamwork.
+            We believe in the constant advancement of technology as an engine of help for people. At all times we care about wanting to help others and we think that learning programming is a great goal that everyone can overcome with a little help.
           </Card>
           <Card
             title={

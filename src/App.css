@@ -41,13 +41,12 @@
   margin-top: 15px;
 }
 
-.app__main__section__article__text-container {
-  min-width: 35%;
-  margin: 0 50px;
+.app__main__section__article__codebox-container {
+  min-width: 50%;
 }
 
-.app__main__section__article__codebox-container {
-  width: 65%;
+.app__main__section__article__text-container {
+  margin: 0 50px;
 }
 
 @media only screen and (max-width: 800px) {

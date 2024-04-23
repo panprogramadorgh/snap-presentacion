@@ -1,0 +1,33 @@
+.process-monitoring {
+    padding-top: 50px;
+}
+
+.process-monitoring__level-card-container {
+    display: flex;
+    gap: 10px;
+}
+
+.process-monitoring__level-card-container__level-card {
+    flex-grow: 1;
+    height: 125px;
+    background: linear-gradient(to bottom, #6ac3ffa0, #1ea5ffa0);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 100px #0099ff50;
+    transition: all 0.2s;
+}
+
+.process-monitoring__level-card-container__level-card:hover {
+    transform: translate(0, -20px) rotateX(15deg) rotateY(15deg);
+    background: linear-gradient(to bottom, #6ac3ff, #1ea5ff);
+    box-shadow: 0 0 100px #0099ff60;
+}
+
+.process-monitoring__level-card-container__level-card.current {
+    box-shadow: 0 0 100px #47ff94;
+    background: linear-gradient(to bottom, #47ff94, #08ec60);
+}
+
+.process-monitoring__level-card-container__level-card.next {
+    background: transparent;
+    border: var(--border-width) dashed var(--border-color);
+}

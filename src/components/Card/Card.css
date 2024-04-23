@@ -15,10 +15,8 @@
 
 .card:hover {
   box-shadow: 0 0 100px #0099ff20;
-}
-
-.card:active {
   transform: rotateY(13deg) rotateX(-10deg);
+
 }
 
 .card span {
