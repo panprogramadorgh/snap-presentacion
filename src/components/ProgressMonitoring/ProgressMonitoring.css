@@ -13,7 +13,7 @@
     background: linear-gradient(to bottom, #6ac3ffa0, #1ea5ffa0);
     border-radius: var(--border-radius);
     box-shadow: 0 0 100px #0099ff50;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .process-monitoring__level-card-container__level-card:hover {

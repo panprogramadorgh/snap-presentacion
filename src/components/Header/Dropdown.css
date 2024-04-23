@@ -2,7 +2,6 @@
   display: none;
   list-style: none;
   flex-flow: column nowrap;
-  /* gap: 10px; */
   padding: 0;
   border-radius: var(--border-radius);
   outline: var(--border-width) solid var(--border-color);
@@ -12,6 +11,8 @@
 
   position: absolute;
   top: 60px;
+
+  animation: dropdown-fadein 0.2s ease-in-out;
 }
 
 .dropdown__menu__item a {
@@ -72,5 +73,14 @@
   }
   .dropdown {
     display: flex;
+  }
+}
+
+@keyframes dropdown-fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
