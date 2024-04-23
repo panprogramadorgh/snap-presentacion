@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import "./ProgressMonitoring.css";
 
 interface Props { }
