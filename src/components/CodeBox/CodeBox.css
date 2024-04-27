@@ -182,6 +182,10 @@
   color: #e6ec76;
 }
 
+.codebox__line-container__line .token.method {
+  color: #80f9ff;
+}
+
 .codebox__line-container__line .token.comment {
   white-space: pre;
   color: var(--border-color);

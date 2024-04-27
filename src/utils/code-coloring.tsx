@@ -146,6 +146,39 @@ function fromStringToCode(str: string): ReactNode[] {
         replacetokens();
       });
 
+      // Methods coloring
+      function colorMethods() {
+        const dotIndex = currentLine().indexOf(".");
+        if (dotIndex === -1 || !isNaN(Number(currentLine()[dotIndex + 1])))
+          return;
+
+        const possibleFinalIndices = [
+          targetWords.operators,
+          targetWords.punctuation,
+          targetWords.comments,
+          " ",
+        ]
+          .flat()
+          .map((char) => currentLine().indexOf(char, dotIndex + 1))
+          .filter((index) => index !== -1);
+
+        if (possibleFinalIndices.length === 0) return;
+        const endIndex = Math.min(...[...possibleFinalIndices]);
+        if (endIndex === -1) return;
+        const method = currentLine().substring(dotIndex + 1, endIndex);
+        // Aprovecha para introducir el punto y el nombre del metodo en el mismo lugar
+        tokens.splice(dotIndex, 1, () => (
+          <span className="token punctuation">{"."}</span>
+        ));
+        tokens.splice(dotIndex + 1, method.length, () => (
+          <span className="token method">{method}</span>
+        ));
+
+        const nextDotIndex = currentLine().indexOf(".");
+        if (nextDotIndex) return colorMethods();
+      }
+      colorMethods();
+
       // Punctuaction coloring
       targetWords.punctuation.forEach((keyword) => {
         const replacetokens = () => {
