@@ -9,5 +9,3 @@ while (true) {
 }
 
 console.log("You die");
-
-obj.metodo() obj.metodo() obj.metodo()

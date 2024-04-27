@@ -37,7 +37,6 @@ const targetWords = {
     "as",
     "typeof",
     "instanceof",
-    "void",
     "delete",
     "public",
     "private",
@@ -50,17 +49,21 @@ const targetWords = {
     "volatile",
     "implements",
     "interface",
+    "readonly",
   ],
-  operators: ["+", "-", "*", "/", "%", "=", "==", "===", "!=", "!==", ">", "<"],
+  operators: ["+", "-", "*", "/", "%", "!==", "===", "!=", "==", "=", ">", "<"],
   punctuation: [".", ":", ",", ";", ":", "(", ")", "{", "}", "[", "]"],
   comments: ["//", "/*", "*/"],
   values: [
+    "True",
+    "False",
     "true",
     "false",
     "null",
     "undefined",
     "Infinity",
     "NaN",
+    "None",
     "0",
     "1",
     "2",
@@ -117,11 +120,18 @@ function fromStringToCode(str: string): ReactNode[] {
         const replacetokens = () => {
           const kwIndex = currentLine().indexOf(keyword);
           if (kwIndex === -1) return;
-          if (currentLine()[kwIndex - 1] && currentLine()[kwIndex - 1] !== " ")
-            return;
+          const supportedCharacters = [
+            ...targetWords.operators,
+            ...targetWords.punctuation,
+            ...targetWords.comments,
+            " ",
+            undefined,
+          ];
+          if (!supportedCharacters.includes(currentLine()[kwIndex - 1])) return;
           if (
-            currentLine()[kwIndex + keyword.length] &&
-            currentLine()[kwIndex + keyword.length] !== " "
+            !supportedCharacters.includes(
+              currentLine()[kwIndex + keyword.length]
+            )
           )
             return;
 
@@ -145,6 +155,105 @@ function fromStringToCode(str: string): ReactNode[] {
         };
         replacetokens();
       });
+
+      // Primitive types coloring
+      function colorPrimitiveTypes() {
+        const primitiveTypes = ["string", "number", "boolean", "void"];
+        primitiveTypes.forEach((type) => {
+          const typeIndex = currentLine().indexOf(type);
+          if (typeIndex === -1) return;
+          const supportedCharacters = [
+            ...targetWords.operators,
+            ...targetWords.punctuation,
+            ...targetWords.comments,
+            " ",
+            undefined,
+          ];
+          if (!supportedCharacters.includes(currentLine()[typeIndex - 1]))
+            return;
+          if (
+            !supportedCharacters.includes(
+              currentLine()[typeIndex + type.length]
+            )
+          )
+            return;
+
+          tokens.splice(typeIndex, type.length, () => (
+            <span className="token primitive-type">{type}</span>
+          ));
+          colorPrimitiveTypes();
+        });
+      }
+      colorPrimitiveTypes();
+
+      // Obj, Clases, Types & interfaces (uppercase Words) coloring
+      function colorUpperCaseWords() {
+        const upperCaseLetters = [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K",
+          "L",
+          "M",
+          "N",
+          "O",
+          "P",
+          "Q",
+          "R",
+          "S",
+          "T",
+          "U",
+          "V",
+          "W",
+          "X",
+          "Y",
+          "Z",
+        ];
+        upperCaseLetters.forEach((letter) => {
+          const uppserCaseLetterIndex = currentLine().indexOf(letter);
+          if (
+            uppserCaseLetterIndex === -1 ||
+            (currentLine()[uppserCaseLetterIndex - 1] &&
+              currentLine()[uppserCaseLetterIndex - 1] !== " ")
+          )
+            return;
+
+          const possibleFinalIndices = [
+            targetWords.operators,
+            targetWords.punctuation,
+            targetWords.comments,
+            " ",
+          ]
+            .flat()
+            .map((char) =>
+              currentLine().indexOf(char, uppserCaseLetterIndex + 1)
+            )
+            .filter((index) => index !== -1);
+
+          const endOfWord = Math.min(...possibleFinalIndices);
+
+          const word = currentLine().substring(
+            uppserCaseLetterIndex,
+            endOfWord
+          );
+
+          const invalidWords = ["True", "False"];
+          if (invalidWords.includes(word)) return;
+
+          tokens.splice(uppserCaseLetterIndex, word.length, () => (
+            <span className="token type">{word}</span>
+          ));
+          colorUpperCaseWords();
+        });
+      }
+      colorUpperCaseWords();
 
       // Methods coloring
       function colorMethods() {
@@ -174,8 +283,7 @@ function fromStringToCode(str: string): ReactNode[] {
           <span className="token method">{method}</span>
         ));
 
-        const nextDotIndex = currentLine().indexOf(".");
-        if (nextDotIndex) return colorMethods();
+        colorMethods();
       }
       colorMethods();
 
@@ -187,6 +295,7 @@ function fromStringToCode(str: string): ReactNode[] {
           tokens.splice(kwIndex, keyword.length, () => (
             <span className="token punctuation">{keyword}</span>
           ));
+          replacetokens();
         };
         replacetokens();
       });
