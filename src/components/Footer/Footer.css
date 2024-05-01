@@ -8,24 +8,35 @@
   justify-content: center;
   background-color: var(--background-color-card);
   border-top: var(--border-width) solid var(--border-color);
+  text-align: center;
 }
 
-.footer__container h3 {
+.footer__container {
+  width: min(1000px, 80%);
+  display: flex;
+  justify-content: space-evenly;
+  gap: 15px;
+  align-items: center;
+}
+
+.footer__container__text-container h3 {
   font-size: var(--font-size-large);
 }
 
-.footer__container h3 span {
+.footer__container__text-container h3 span {
   color: var(--a-color);
 }
 
-.footer__container__li-container {
+.footer__container__text-container__li-container {
   padding: 0;
   list-style: none;
   display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
   gap: 10px;
 }
 
-.footer__container__li-container__li {
+.footer__container__text-container__li-container__li {
   padding: 5px;
   background-color: #0099ff20;
   border-radius: var(--border-radius);

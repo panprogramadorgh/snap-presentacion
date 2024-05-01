@@ -1,9 +1,17 @@
 .logo {
+  --logo-font-size: var(--font-size-title);
+
   display: flex;
+  place-content: center;
   gap: 5px;
   font-family: var(--font-family-mono);
   font-size: var(--font-size-title);
   font-weight: 600;
+  font-size: var(--logo-font-size);
+}
+
+.logo.footer-logo {
+  --logo-font-size: 5rem;
 }
 
 .logo:hover {

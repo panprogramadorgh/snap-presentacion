@@ -34,10 +34,12 @@ const logo = [
   },
 ];
 
-interface Props {}
-const Logo: FC<Props> = ({}) => {
+interface Props {
+  footer?: boolean;
+}
+const Logo: FC<Props> = ({ footer }) => {
   return (
-    <a href="/" className="logo">
+    <a href="/" className={`logo ${footer ? "footer-logo" : ""}`.trim()}>
       {logo.map(({ letter, color }, index) => {
         return (
           <span key={index} className={`logo__letter ${color}`.trim()}>
