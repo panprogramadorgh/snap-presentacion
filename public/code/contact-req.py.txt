@@ -1,0 +1,19 @@
+import sqlite3
+import pandas as pd
+from variables import conn_str
+
+
+class Database:
+    def __init__(self, connection_string: str):
+        self.conn = sqlite3.connect(connection_string)
+        self.cursor = self.conn.cursor()
+
+    def query(self, query_str: str) -> None: ...
+
+my_db = Database(conn_str)
+my_db.query(
+    """
+            INSERT INTO contacts (name, country, email, message)
+            VALUES ('$$$ $$', '$$$$$', '$$$@$$.$', '$$ $$$$ $ $$$ $$$$$')
+            """
+)

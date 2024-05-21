@@ -76,14 +76,13 @@ const Form: FC<Props> = ({}) => {
       </div>
       <div className="form__codebox-container">
         <CodeBox
-          skeletonLines={21}
-          linesFadeout
+          skeletonLines={19}
           getTabs={async () => {
             return [
               {
-                label: "shopping.py",
-                content: fromStringToCode(await fetchCode("shop-list.py")),
-                highlightedLines: [4, 5, 6, 9, 10, 11, 12],
+                label: "contact-req.py",
+                content: fromStringToCode(await fetchCode("contact-req.py")),
+                highlightedLines: [14, 15, 16, 17, 18, 19],
               },
             ];
           }}
